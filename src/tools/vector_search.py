@@ -14,18 +14,40 @@ class VectorSearchTool:
         try:
             from langchain_community.vectorstores import Chroma
             from langchain_community.embeddings import HuggingFaceEmbeddings
-            
             # 从环境变量读取配置
             db_path = str(Path(__file__).parent.parent.parent/"models/vector_db")
             collection_name = "water_regulations"
             model_name = os.getenv("EMBEDDING_MODEL_NAME", "BAAI/bge-large-zh-v1.5")
+            # 强制使用本地缓存
+            model_kwargs = {
+                'device': 'cpu',
+                'local_files_only': True,  # 只使用本地文件
+            }
+            encode_kwargs = {
+                'normalize_embeddings': True
+            }
+            logger.info(f"尝试从本地缓存加载模型: {model_name}")
             
-            # 初始化embedding
-            embeddings = HuggingFaceEmbeddings(
-                model_name=model_name,
-                model_kwargs={'device': 'cpu'},
-                encode_kwargs={'normalize_embeddings': True}
-            )
+            try:
+                # 初始化embedding（离线模式）
+                embeddings = HuggingFaceEmbeddings(
+                    model_name=model_name,
+                    model_kwargs=model_kwargs,
+                    encode_kwargs=encode_kwargs
+                )
+                logger.info("成功从本地缓存加载模型")
+                
+            except Exception as e:
+                logger.error(f"本地缓存加载失败: {e}")
+                logger.info("尝试在线下载模型...")
+                # 如果本地缓存失败，尝试在线下载
+                model_kwargs['local_files_only'] = False
+                embeddings = HuggingFaceEmbeddings(
+                    model_name=model_name,
+                    model_kwargs=model_kwargs,
+                    encode_kwargs=encode_kwargs
+                )
+                logger.info("在线下载模型成功")
             
             # 加载向量存储
             self.vectorstore = Chroma(
