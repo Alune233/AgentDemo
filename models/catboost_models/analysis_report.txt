@@ -1,0 +1,16 @@
+模型分析报告
+====================
+
+前5重要特征:
+1. ph: 18.079
+5. Sulfate: 16.297
+2. Hardness: 12.009
+3. Solids: 11.697
+4. Chloramines: 11.052
+
+SHAP分析样本数: 200
+
+生成的图表:
+- feature_importance.png: 特征重要性
+- shap_summary.png: SHAP影响分析
+- shap_importance.png: SHAP重要性

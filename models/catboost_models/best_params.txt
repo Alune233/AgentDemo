@@ -1,0 +1,6 @@
+CatBoost最佳参数
+====================
+depth: 6
+iterations: 500
+l2_leaf_reg: 5
+learning_rate: 0.03

@@ -9,14 +9,14 @@ logs/
 *.log
 
 # Model files and training artifacts
-models/
-*.cbm
-*.pkl
-*.joblib
+# models/
+# *.cbm
+# *.pkl
+# *.joblib
 
 # Vector database
-vector_db/
-*.sqlite3
+# vector_db/
+# *.sqlite3
 
 # Data files
 # data/
