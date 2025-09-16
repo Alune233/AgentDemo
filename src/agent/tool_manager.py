@@ -21,12 +21,12 @@ def execute_code(code: str, language: str = "python") -> str:
     try:
         result = executor.execute_code(code, language)
         if result.success:
-            return f"代码执行成功。输出: {result.output}。执行时间: {result.execution_time:.3f}秒"
+            return f"代码执行成功。输出: {result.output}。执行时间: {result.execution_time:.3f}\n"
         else:
-            return f"代码执行失败，错误: {result.error}"
+            return f"代码执行失败，错误: {result.error}\n"
     except Exception as e:
-        logger.error(f"代码执行工具调用失败: {e}")
-        return f"代码执行工具调用失败: {str(e)}"
+        logger.error(f"代码执行工具调用失败: {e}\n")
+        return f"代码执行工具调用失败: {str(e)}\n"
 
 @tool
 def predict_water(ph: Optional[float] = None, hardness: Optional[float] = None, solids: Optional[float] = None, 
@@ -59,10 +59,10 @@ def predict_water(ph: Optional[float] = None, hardness: Optional[float] = None, 
         water_params = {k: v for k, v in water_params.items() if v is not None}
         
         result = predictor.predict(water_params)
-        return f"水质预测完成。结果: {'可饮用' if result.is_potable else '不可饮用'}，置信度: {result.confidence:.3f}，输入参数: {result.input_features}"
+        return f"水质预测完成。结果: {'可饮用' if result.is_potable else '不可饮用'}，置信度: {result.confidence:.3f}，输入参数: {result.input_features}\n"
     except Exception as e:
         logger.error(f"水质预测工具调用失败: {e}")
-        return f"水质预测失败: {str(e)}"
+        return f"水质预测失败: {str(e)}\n"
 
 @tool
 def search_regulations(query: str, k: int = 3) -> str:
@@ -78,16 +78,16 @@ def search_regulations(query: str, k: int = 3) -> str:
     try:
         result = search_tool.search(query, k=k)
         if not result:
-            return "未找到相关法规条文"
+            return "未找到相关法规条文\n"
         
         regulations = []
         for i, item in enumerate(result, 1):
             regulations.append(f"{i}. {item['content'][:200]}...")
         
-        return f"找到{len(regulations)}条相关法规: " + " | ".join(regulations)
+        return f"找到{len(regulations)}条相关法规: " + " | ".join(regulations) + "\n"
     except Exception as e:
         logger.error(f"法规检索工具调用失败: {e}")
-        return f"法规检索失败: {str(e)}"
+        return f"法规检索失败: {str(e)}\n"
 
 class ToolManager:
     def __init__(self):

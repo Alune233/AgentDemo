@@ -54,7 +54,7 @@ class LLMManager:
                     timeout=60,
                     max_retries=3,
                 )
-                self.llm_type = "通义千问(Qwen)"
+                self.llm_type = "Qwen"
                 
             elif provider == "deepseek" and os.getenv("DEEPSEEK_API_KEY"):
                 from langchain_openai import ChatOpenAI
@@ -67,7 +67,7 @@ class LLMManager:
                     timeout=60,
                     max_retries=3,
                 )
-                self.llm_type = "深度求索"
+                self.llm_type = "DeepSeek"
             
             if self.llm:
                 logger.info(f"{self.llm_type} 初始化成功")
