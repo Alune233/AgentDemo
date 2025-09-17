@@ -14,8 +14,8 @@ class CodeExecutionResult:
     execution_time: float
 
 class SandboxFusionExecutor:
-    def __init__(self, base_url: str = "http://localhost:8080"):
-        self.base_url = base_url.rstrip('/')
+    def __init__(self):
+        self.base_url = os.getenv("CODE_EXECUTION_URL", "http://localhost:8080").rstrip('/')
         self.session = requests.Session()
         self.session.headers.update({'Content-Type': 'application/json'})
         
