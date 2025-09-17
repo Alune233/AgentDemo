@@ -10,38 +10,38 @@
 
 ### 1. 智能对话系统
 
--   **短期记忆**：会话窗口保留最近 10 轮对话
--   **长期记忆**：基于向量数据库的法规知识检索
--   **自然语言交互**：支持中文对话，智能选择处理方式
+- **短期记忆**：会话窗口保留最近 10 轮对话
+- **长期记忆**：基于向量数据库的法规知识检索
+- **自然语言交互**：支持中文对话，智能选择处理方式
 
 ### 2. 三大核心工具
 
 #### 🔍 法规知识检索工具
 
--   基于 **Chroma 向量数据库** + **BGE-Large-ZH-v1.5** 模型
--   语义搜索水利法规内容
--   返回相似度分数和来源片段
+- 基于 **Chroma 向量数据库** + **BGE-Large-ZH-v1.5** 模型
+- 语义搜索水利法规内容
+- 返回相似度分数和来源片段
 
 #### 🐍 代码执行工具
 
--   集成 **SandboxFusion** 沙箱环境
--   支持 Python 代码安全执行
--   超时保护和资源限制
+- 集成 **SandboxFusion** 沙箱环境
+- 支持 Python 代码安全执行
+- 超时保护和资源限制
 
 #### 💧 水质预测工具
 
--   基于 **CatBoost** 机器学习模型
--   使用 [Kaggle Water Potability](https://www.kaggle.com/datasets/adityakadiwal/water-potability) 数据集训练
--   支持 9 项水质参数预测
--   提供预测置信度
+- 基于 **CatBoost** 机器学习模型
+- 使用 [Kaggle Water Potability](https://www.kaggle.com/datasets/adityakadiwal/water-potability) 数据集训练
+- 支持 9 项水质参数预测
+- 提供预测置信度
 
 ## 📊 模型性能
 
 ### CatBoost 水质预测模型
 
--   **准确率**: 66.16%
--   **F1 分数**: 41.88%
--   **AUC**: 67.01%
+- **准确率**: 66.16%
+- **F1 分数**: 41.88%
+- **AUC**: 67.01%
 
 ### 特征重要性排序
 
@@ -57,13 +57,13 @@
 
 ## 🛠 技术栈
 
--   **Python**: 3.13+
--   **LangChain**: 0.3+ (智能体框架)
--   **ChromaDB**: 向量数据库
--   **HuggingFace**: BGE-Large-ZH-v1.5 中文语义模型
--   **CatBoost**: 梯度提升分类器
--   **SHAP**: 模型解释性分析
--   **UV**: 快速 Python 包管理器
+- **Python**: 3.13+
+- **LangChain**: 0.3+ (智能体框架)
+- **ChromaDB**: 向量数据库
+- **HuggingFace**: BGE-Large-ZH-v1.5 中文语义模型
+- **CatBoost**: 梯度提升分类器
+- **SHAP**: 模型解释性分析
+- **UV**: 快速 Python 包管理器
 
 ## 🔧 安装与配置
 
@@ -101,7 +101,7 @@ docker run -it -p 8080:8080 vemlp-cn-beijing.cr.volces.com/preset-images/code-sa
 ### 2. 克隆项目
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/Alune233/AgentDemo.git
 cd AgentDemo
 ```
 
@@ -135,8 +135,8 @@ EMBEDDING_MODEL_NAME=BAAI/bge-large-zh-v1.5
 
 项目文件夹中已包含所需数据：
 
--   `data/water_potability.csv` - Kaggle 水质数据集
--   `data/regulations/水利法律法规汇编（2023版）.pdf` - 水利法规文档
+- `data/water_potability.csv` - Kaggle 水质数据集
+- `data/regulations/水利法律法规汇编（2023版）.pdf` - 水利法规文档
 
 ## 🚀 快速开始
 
@@ -144,8 +144,8 @@ EMBEDDING_MODEL_NAME=BAAI/bge-large-zh-v1.5
 
 项目文件夹中已包含预训练好的模型：
 
--   `models/catboost_models/` - CatBoost 水质预测模型
--   `models/vector_db/` - 向量数据库
+- `models/catboost_models/` - CatBoost 水质预测模型
+- `models/vector_db/` - 向量数据库
 
 如需重新训练模型（可选）：
 
