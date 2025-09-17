@@ -15,7 +15,7 @@ class CodeExecutionResult:
 
 class SandboxFusionExecutor:
     def __init__(self):
-        self.base_url = os.getenv("CODE_EXECUTION_URL", "http://localhost:8080").rstrip('/')
+        self.base_url = os.getenv("SANDBOX_FUSION_URL", "http://localhost:8080").rstrip('/')
         self.session = requests.Session()
         self.session.headers.update({'Content-Type': 'application/json'})
         
